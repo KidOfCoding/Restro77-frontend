@@ -8,7 +8,6 @@ import Footer from './components/Footer/Footer'
 import LoginPopUp from './components/Login/LoginPopUp'
 import Verify from './Pages/Verify/Verify'
 import MyOrders from './Pages/Orders/MyOrders'
-import Menu from './Pages/Menu'
 
 
 const App = () => {
