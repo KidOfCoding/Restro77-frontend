@@ -170,7 +170,7 @@
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .header {
-        height: 60vh;
+        height: 40vh;
         border-radius: 0;
         margin: 0;
         width: 100%;

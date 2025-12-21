@@ -32,6 +32,7 @@
     color: #333;
 }
 
+
 .filterBtn {
     background: none;
     border: none;
@@ -44,154 +45,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+    /* Important: prevents icon from disappearing */
 }
 
-.filterBtn:hover {
-    background-color: #f0f0f0;
-    color: #ef4f5f;
-}
-
-.filterBtn.activeFilter {
-    color: #ef4f5f;
-    background-color: #fff0f1;
-}
-
-/* Dropdown */
-.filterDropdown {
-    position: absolute;
-    top: 110%;
-    /* Below search bar */
-    width: 90%;
-    max-width: 400px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    padding: 20px;
-    z-index: 100;
-    border: 1px solid #eee;
-    animation: fadeIn 0.2s ease-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.filterHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-}
-
-.filterHeader h3 {
-    margin: 0;
-    font-size: 18px;
-    color: #333;
-}
-
-.filterHeader button {
-    background: none;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    color: #888;
-}
-
-.filterSection {
-    margin-bottom: 20px;
-}
-
-.filterSection h4 {
-    margin: 0 0 10px 0;
-    font-size: 14px;
-    color: #666;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-.typeOptions {
-    display: flex;
-    gap: 10px;
-}
-
-.typeOptions button {
-    padding: 8px 16px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    background: white;
-    cursor: pointer;
-    font-size: 14px;
-    transition: 0.2s;
-}
-
-.typeOptions button.selectedType {
-    background-color: #ef4f5f;
-    color: white;
-    border-color: #ef4f5f;
-}
-
-.categoryGrid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    max-height: 200px;
-    overflow-y: auto;
-}
-
-.checkboxLabel {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 15px;
-    cursor: pointer;
-    color: #444;
-}
-
-.checkboxLabel input {
-    accent-color: #ef4f5f;
-    width: 16px;
-    height: 16px;
-}
-
-.filterFooter {
-    text-align: right;
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #eee;
-}
-
-.clearBtn {
-    background: none;
-    border: none;
-    color: #ef4f5f;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 14px;
-    text-decoration: underline;
-}
-
-.FoodDisplayList {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
+/* ... existing logic ... */
 
 .sectionTitle {
     font-size: max(2vw, 24px);
     font-weight: 600;
-    color: #444;
-    /* Changed to dark for contrast on white bg, if global is white. */
+    color: #fff;
+    /* White title for dark theme */
     margin-bottom: 20px;
     text-transform: capitalize;
     border-left: 5px solid #ef4f5f;
@@ -214,6 +78,18 @@
 
 @media (max-width: 600px) {
     .menuGrid {
-        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        /* Force single column for large cards on mobile */
+        grid-template-columns: 1fr;
+    }
+
+    .searchContainer {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .filterDropdown {
+        width: 100%;
+        left: 0;
+        max-width: none;
     }
 }

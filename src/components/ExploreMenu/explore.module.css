@@ -1,65 +1,130 @@
-.ExploreMenu{
+.ExploreMenu {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
+    /* Reduced gap as requested */
     margin: 10px;
+    position: relative;
+    /* For positioning controls */
 }
 
-.ExploreMenu h1{
-    color: #fff;
-    font-weight: 500;
-}
-
-.ExploreMenuText{
-    max-width: 60%;
-    color: #808080;
-}
-
-.ExploreMenuList{
+.menuHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 30px;
-    text-align: center;
-    margin: 20px 0px;
-    overflow-x: scroll;
+    /* margin-bottom removed to reduce gap */
 }
 
-.ExploreMenuList::-webkit-scrollbar{
+.menuHeader h1 {
+    color: #fff;
+    font-weight: 600;
+    margin: 0;
+    font-size: max(2vw, 24px);
+}
+
+.menuControls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.controlBtn {
+    background: rgba(255, 255, 255, 0.05);
+    /* Very subtle transparent */
+    backdrop-filter: blur(5px);
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    /* Circle for toggle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+}
+
+/* Specific style for arrow buttons to be cleaner */
+.arrowBtn {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 18px;
+    padding: 0;
+    width: auto;
+    height: auto;
+}
+
+.arrowBtn:hover {
+    color: white;
+    transform: scale(1.2);
+    background: transparent;
+}
+
+.controlBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.ExploreMenuList {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    margin: 5px 0px;
+    /* Tighter margin */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+    /* Hide scrollbar but allow functionality */
+    scrollbar-width: none;
+}
+
+
+.ExploreMenuList::-webkit-scrollbar {
     display: none;
 }
 
-.MenuListItem img{
+.MenuListItem {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    /* Prevent shrinking */
+}
+
+.MenuListItem img {
     width: 7.5vw;
-    min-width: 80px;
+    min-width: 70px;
     cursor: pointer;
     border-radius: 50%;
     transition: 0.1s;
 }
 
-.MenuListItem p{
-    margin-top: 10px;
-    color: #747474;
-    font-size: max(1.4vw,16px);
+.MenuListItem p {
+    margin-top: 5px;
+    color: #ffffff;
+    font-size: max(1.4vw, 14px);
     cursor: pointer;
+    font-weight: 500;
 }
 
-.ExploreMenu hr{
+.ExploreMenu hr {
     margin: 10px 0px;
     height: 2px;
     background-color: #eded05;
     border: none;
 }
 
-.MenuListItem .active{
-    border: 4px solid #eded05;
+.MenuListItem .active {
+    border: 3px solid #eded05;
     padding: 2px;
 }
 
-@media (max-width:1050px){
-    .ExploreMenuText{
+@media (max-width:1050px) {
+    .ExploreMenuText {
         max-width: 100%;
         font-size: 14px;
     }
-    
+
 }

@@ -14,7 +14,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
+    z-index: 9999;
     animation: slideUp 0.3s ease-out;
 }
 
@@ -68,8 +68,10 @@
 }
 
 /* Ensure it doesn't overlap the content too much on mobile */
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .floatingCart {
-        bottom: 30px;
+        bottom: 40px;
+        width: 95%;
+        /* Wider on mobile */
     }
 }
