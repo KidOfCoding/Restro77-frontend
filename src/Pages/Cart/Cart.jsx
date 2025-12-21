@@ -4,6 +4,7 @@ import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from 'react-router-dom';
 import { FaRupeeSign } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
+import { GiCancel } from "react-icons/gi";
 const Cart = () => {
   const { cartItem, food_list, removeFromCart, getTotalCartAmount , URl} = useContext(StoreContext);
 
@@ -55,7 +56,7 @@ theme: "dark",
                     className={style.Cross}
                     onClick={() => removeFromCart(item._id)}
                   >
-                    x
+                   <GiCancel color="red" />
                   </p>
                 </div>
                 <hr />

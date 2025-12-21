@@ -712,6 +712,7 @@ const StoreContextProvider = (props) => {
   const loadcartData = async (token) => {
     const response = await axios.post(URl+"/api/cart/get",{}, {headers: {token}})
     setCartItems(response.data.cartData)
+    setItems(response.data.cartData.size())
   }
 
   // To not logout When refreshed
