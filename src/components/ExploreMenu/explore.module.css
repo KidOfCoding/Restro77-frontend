@@ -127,6 +127,15 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    gap: 10px;
+    /* Add slight gap */
+}
+
+.headerControl h1 {
+    margin: 0;
+    /* Remove default margins */
+    white-space: nowrap;
+    /* Try to keep on one line */
 }
 
 .viewToggle {
@@ -140,11 +149,34 @@
     /* Hidden on desktop */
     align-items: center;
     gap: 5px;
+    white-space: nowrap;
+    /* Force one line: View All */
+    flex-shrink: 0;
+    /* Don't crush the button */
+}
+
+@media (max-width: 480px) {
+
+    /* Very small screens */
+    .headerControl h1 {
+        font-size: 18px;
+        /* Significantly smaller to fit */
+    }
+
+    .viewToggle {
+        font-size: 12px;
+        gap: 3px;
+    }
 }
 
 @media (max-width: 768px) {
     .viewToggle {
         display: flex;
+    }
+
+    /* Ensure h1 isn't too big on generic mobile */
+    .headerControl h1 {
+        font-size: max(4vw, 20px);
     }
 }
 
