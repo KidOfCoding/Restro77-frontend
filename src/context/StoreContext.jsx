@@ -4,7 +4,7 @@ import axios from "axios";
 
 const StoreContextProvider = (props) => {
   const [cartItem, setCartItems] = useState({});
-  const URl = "http://localhost:4000"
+  const URl = "https://restro77-backend.vercel.app/"
   const [token , setToken] = useState("")
   const [food_list,setFoodList] = useState([])
 
