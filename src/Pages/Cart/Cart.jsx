@@ -3,10 +3,28 @@ import style from "./cart.module.css";
 import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from 'react-router-dom';
 import { FaRupeeSign } from "react-icons/fa";
+import { ToastContainer, toast } from 'react-toastify';
 const Cart = () => {
   const { cartItem, food_list, removeFromCart, getTotalCartAmount , URl} = useContext(StoreContext);
 
   const navigate = useNavigate();
+  const checkOut=()=>{
+     if (getTotalCartAmount()>0) {
+        navigate('/placeorder');
+     }
+     else{
+       toast.warn('There is no item', {
+position: "top-center",
+autoClose: 5000,
+hideProgressBar: false,
+closeOnClick: false,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "dark",
+});
+     } 
+  }
 
   return (
     <div className={style.Cart}>
@@ -65,7 +83,7 @@ const Cart = () => {
               <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+5}</b>
             </div>
           </div>
-          <button onClick={()=>navigate('/placeorder')}>Checkout</button>
+          <button onClick={checkOut}>Checkout</button>
         </div>
         <div className={style.CartPromoCode}>
           <div>

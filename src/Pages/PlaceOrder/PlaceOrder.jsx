@@ -56,13 +56,14 @@ const PlaceOrder = () => {
 
   const navigate = useNavigate()
 
-  useEffect(()=>{
-    if(!token){
-      navigate('/cart')
-    } else if(getTotalCartAmount() === 0){
-      navigate("/cart")
-    } 
-  },[token])
+  // useEffect(()=>{
+  //   if(!token){
+  //     navigate('/cart')
+  //   } else if(getTotalCartAmount() === 0){
+
+  //     navigate("/cart")
+  //   } 
+  // },[token])
 
   return (
     <form onSubmit={placeOrder} className={style.placeOrder}>
