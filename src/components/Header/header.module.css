@@ -1,5 +1,5 @@
 .header {
-    height: 50vw;
+    height: 43vw;
     min-height: 300px; /* Prevents text from disappearing on small screens */
     margin: 0px auto;
     border-radius: 30px;
@@ -11,7 +11,7 @@
     display: flex;
     width: 600%;
     height: 100%;
-    animation: slideLoop 45s linear infinite;
+    animation: slideLoop 20s linear infinite;
 }
 
 .slide {

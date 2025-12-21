@@ -7,6 +7,7 @@
     top: 0;           /* ADD THIS: Tells it to stick at the very top */
     z-index: 10;      /* ADD THIS: Ensures it stays above other content */
     background-color: #0c0d14;
+    font-size: 20px;
 }
 
 .Navbar .logo{
@@ -46,6 +47,7 @@
 .Navbar .active{
     padding-bottom: 2px;
     border-bottom: 2px solid #49557e;
+  
 }
 
 .Navbar li{
