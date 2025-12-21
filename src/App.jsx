@@ -10,13 +10,15 @@ import Verify from './Pages/Verify/Verify'
 import MyOrders from './Pages/Orders/MyOrders'
 
 
+import FloatingCart from './components/FloatingCart/FloatingCart'
+
 const App = () => {
-  const [showLogin,setShowLogin] = useState(false)
+  const [showLogin, setShowLogin] = useState(false)
   return (
     <>
       {showLogin ? <LoginPopUp setShowLogin={setShowLogin} /> : <></>}
       <div className="app">
-         
+
         <Navbar setShowLogin={setShowLogin} />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -25,6 +27,7 @@ const App = () => {
           <Route path='/verify' element={<Verify />} />
           <Route path="/myorders" element={<MyOrders />} />
         </Routes>
+        <FloatingCart />
       </div>
       <Footer />
     </>

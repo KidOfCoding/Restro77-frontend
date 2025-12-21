@@ -1,120 +1,205 @@
 .header {
-    height: 43vw;
-    min-height: 300px; /* Prevents text from disappearing on small screens */
-    margin: 0px auto;
-    border-radius: 30px;
-    overflow: hidden;
+    height: 38vw;
+    min-height: 450px;
+    width: 95%;
+    /* Make it slightly contained for a card look, or 100% for full width. User said modern dev style, often slightly rounded card in container looks nice. Reference to previous 'margin: 0 auto' suggests centered. */
+    margin: 30px auto;
+    border-radius: 20px;
     position: relative;
-}
-
-.slider {
-    display: flex;
-    width: 600%;
-    height: 100%;
-    animation: slideLoop 20s linear infinite;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
 }
 
 .slide {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    
-    /* 1. This pushes content to the bottom */
-    justify-content: flex-end; 
-    
-    /* 2. Control exactly how far from the bottom edge it sits */
-    padding-bottom: 40px; 
-    padding-left: 6vw;
-    
     background-size: cover;
     background-position: center;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    transform: scale(1.05);
+    /* Slight zoom out effect on enter */
 }
 
-/* 3. Remove default margins that might push the text away from the bottom */
-.slide h2, 
-.slide p, 
-.slide a {
-    margin: 0; 
-    position: relative;
-    z-index: 2;
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 1;
 }
 
-/* 4. Use gap to manage space between the title, description, and button */
-.slide {
-    gap: 15px; 
-}
 /* Dark Overlay */
 .slide::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4); /* Increased opacity for better text readability */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
     z-index: 1;
 }
 
-/* Ensure text is above overlay */
-/* .slide h2, 
-.slide p, 
-.slide a {
-    position: relative;
+/* Background Images */
+.bg1 {
+    background-image: url("/hero_bg.png");
+}
+
+.bg2 {
+    background-image: url("/hero_bg1.jpg");
+}
+
+.bg3 {
+    background-image: url("/hero_bg2.jpg");
+}
+
+.content {
+    position: absolute;
+    bottom: 10%;
+    left: 6%;
+    width: 50%;
     z-index: 2;
     color: white;
-    margin-bottom: 0;
-} */
-
-.slide h2 {
-    font-size: max(4vw, 24px);
-    font-weight: 600;
-    max-width: 70%;
-    color: white;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5vw;
 }
 
-.slide p {
-    font-size: 1.2vw;
-    max-width: 50%;
-     color: white;
+.active .content {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
 }
 
-.slide a {
+.content h2 {
+    font-size: max(4.5vw, 32px);
+    font-weight: 700;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.content p {
+    font-size: max(1.1vw, 14px);
+    color: #f0f0f0;
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+.content a {
+    padding: 12px 30px;
     background: white;
-    padding: 1vw 2.5vw;
-    border-radius: 50px;
-    color: black;
-    width: fit-content;
-    text-decoration: none;
-    font-weight: 500;
+    color: #333;
     font-size: max(1vw, 14px);
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid white;
+}
+
+.content a:hover {
+    background: transparent;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Controls */
+.prevBtn,
+.nextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
     transition: 0.3s;
 }
 
-.slide a:hover {
-    background-color: #eee;
+.prevBtn:hover,
+.nextBtn:hover {
+    background: white;
+    color: black;
 }
 
-/* Background Images */
-.bg1 { background-image: url("/hero_bg.png"); }
-.bg2 { background-image: url("/hero_bg1.jpg"); }
-.bg3 { background-image: url("/hero_bg2.jpg"); }
-
-@keyframes slideLoop {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+.prevBtn {
+    left: 20px;
 }
 
-/* Responsive Fixes */
-@media (max-width: 750px) {
+.nextBtn {
+    right: 20px;
+}
+
+/* Pagination Dots */
+.dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dot.activeDot {
+    background: white;
+    transform: scale(1.2);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
     .header {
-        height: 50vw; /* Taller on mobile to fit text */
+        height: 60vh;
+        border-radius: 0;
+        margin: 0;
+        width: 100%;
+        min-height: auto;
     }
-    .slide p {
-        display: none; /* Hide description on mobile to save space */
+
+    .content {
+        width: 90%;
+        bottom: 15%;
+        left: 5%;
+        align-items: center;
+        text-align: center;
     }
-    .slide h2 {
-        max-width: 90%;
+
+    .content h2 {
+        font-size: 32px;
     }
-    .slide a {
-        padding: 10px 20px;
+
+    .content p {
+        /* On very small devices, long text might be too much, but let's keep it visible but smaller */
+        display: block;
+        font-size: 14px;
+        max-width: 100%;
+    }
+
+    .prevBtn,
+    .nextBtn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
 }
