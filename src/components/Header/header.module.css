@@ -1,7 +1,7 @@
 .header {
     height: 50vw;
     min-height: 300px; /* Prevents text from disappearing on small screens */
-    margin: 30px auto;
+    margin: 0px auto;
     border-radius: 30px;
     overflow: hidden;
     position: relative;
