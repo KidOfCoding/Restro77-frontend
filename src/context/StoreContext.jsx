@@ -713,6 +713,9 @@ const StoreContextProvider = (props) => {
   const loadcartData = async (token) => {
     const response = await axios.post(URl+"/api/cart/get",{}, {headers: {token}})
     setCartItems(response.data.cartData)
+    const totalItems = Object.values(response.data.cartData).reduce((sum, qty) => sum + qty, 0);
+
+  setItems(totalItems);
    // setItems(Object.keys(response.data.cartData).length);
   }
 
