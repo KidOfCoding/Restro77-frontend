@@ -10,7 +10,7 @@ const FoodDisplay = ({ category }) => {
   
   return (
     <div className={style.FoodDisplay} id="fooddisplay">
-      <h2> Top dishes Near You</h2>
+      {/* <h2> Top dishes Near You</h2> */}
       <div className={style.FoodDisplayList}>
          {/* Noodles  */}
           <section>
