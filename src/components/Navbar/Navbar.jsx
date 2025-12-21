@@ -3,12 +3,13 @@ import style from "../Navbar/navbar.module.css";
 import { assets } from "../../assets/assets";
 import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
+import { TbH1 } from "react-icons/tb";
 
 const Navbar = ({ setShowLogin }) => {
   // useState used here for menu
   const [menu, setMenu] = useState("home");
 
-  const { getTotalCartAmount, token, setToken } = useContext(StoreContext)
+  const {Items ,getTotalCartAmount, token, setToken } = useContext(StoreContext)
 
   const navigate = useNavigate()
   const Logout = () => {
@@ -61,7 +62,9 @@ const Navbar = ({ setShowLogin }) => {
           <Link to='/cart'>
             <img src={assets.basket_icon} />
           </Link>
-          <div className={getTotalCartAmount() ? style.dot : ""}></div>
+           {Items > 0 && (
+        <div className={style.dot}>{Items}</div>
+          )}
         </div>
         {!token ? <button
           onClick={() => {

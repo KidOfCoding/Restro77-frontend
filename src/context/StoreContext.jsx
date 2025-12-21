@@ -7,12 +7,13 @@ const StoreContextProvider = (props) => {
   const URl = "https://restro77-backend.onrender.com"
   const [token , setToken] = useState("")
   const [food_list,setFoodList] = useState([])
-
+  const [Items,setItems]=useState(0);
   const addToCart =  async (itemId) => {
     console.log(itemId);
-    
+    setItems((prev)=>prev+1);
     if (!cartItem[itemId]) {
       setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
+      
     } else {
       setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     }
@@ -24,6 +25,7 @@ const StoreContextProvider = (props) => {
   };
 
   const removeFromCart = async (itemId) => {
+    setItems((prev)=>prev-1);
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (token) {
       await axios.post(URl+"/api/cart/remove", {itemId}, {headers: {token}})
@@ -40,7 +42,6 @@ const StoreContextProvider = (props) => {
       const itemInfo = food_list.find(
         (product) => product._id.toString() === itemId
       );
-
       if (itemInfo) {
         totalAmount += itemInfo.price * quantity;
       }
@@ -734,7 +735,8 @@ const StoreContextProvider = (props) => {
     getTotalCartAmount,
     URl,
     token,
-    setToken
+    setToken,
+    Items
   };
 
 
