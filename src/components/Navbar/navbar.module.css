@@ -1,9 +1,11 @@
-.Navbar{
+.Navbar {
     padding: 20px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
+    position: sticky; /* You have this */
+    top: 0;           /* ADD THIS: Tells it to stick at the very top */
+    z-index: 10;      /* ADD THIS: Ensures it stays above other content */
     background-color: #0c0d14;
 }
 
