@@ -26,8 +26,8 @@ const Footer = () => {
         <div className={style.FooterContentRight}>
             <h2>Get In Touch</h2>
             <ul>
-                <li>+91 9902901869</li>
-                <li>QuickBite@gmail.com</li>
+                <li>+91 7008939551</li>
+                <li>Restro77@gmail.com</li>
             </ul>
         </div>
       </div>
