@@ -1,61 +1,120 @@
-.header{
-    height: 34vw;
+.header {
+    height: 50vw;
+    min-height: 300px; /* Prevents text from disappearing on small screens */
     margin: 30px auto;
-    background: url('/hero_bg.png') no-repeat ;
-    background-size: contain;
-    position: relative;
     border-radius: 30px;
-    /* margin-bottom: 10px; */
+    overflow: hidden;
+    position: relative;
 }
 
-.headerContent{
-    position: absolute;
+.slider {
+    display: flex;
+    width: 600%;
+    height: 100%;
+    animation: slideLoop 45s linear infinite;
+}
+
+.slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: start;
-    gap: 1.5vw;
+    
+    /* 1. This pushes content to the bottom */
+    justify-content: flex-end; 
+    
+    /* 2. Control exactly how far from the bottom edge it sits */
+    padding-bottom: 40px; 
+    padding-left: 6vw;
+    
+    background-size: cover;
+    background-position: center;
+}
+
+/* 3. Remove default margins that might push the text away from the bottom */
+.slide h2, 
+.slide p, 
+.slide a {
+    margin: 0; 
+    position: relative;
+    z-index: 2;
+}
+
+/* 4. Use gap to manage space between the title, description, and button */
+.slide {
+    gap: 15px; 
+}
+/* Dark Overlay */
+.slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4); /* Increased opacity for better text readability */
+    z-index: 1;
+}
+
+/* Ensure text is above overlay */
+/* .slide h2, 
+.slide p, 
+.slide a {
+    position: relative;
+    z-index: 2;
+    color: white;
+    margin-bottom: 0;
+} */
+
+.slide h2 {
+    font-size: max(4vw, 24px);
+    font-weight: 600;
+    max-width: 70%;
+    color: white;
+}
+
+.slide p {
+    font-size: 1.2vw;
     max-width: 50%;
-    bottom: 10%;
-    left: 6vw;
-    animation: fadeIn 3s;
+     color: white;
 }
 
-.headerContent h2{
-    font-weight: 500;
-    color: white;
-    font-size: max(4vw ,22px);
-}
-
-.headerContent p{
-    color: white;
-    font-size: 1vw;
-}
-
-.headerContent  a{
-    border: none;
-    color: #747474;
-    font-weight: 400;
-    padding: 1vw 2.3vw;
-    background-color: white;
+.slide a {
+    background: white;
+    padding: 1vw 2.5vw;
+    border-radius: 50px;
     color: black;
-    font-size: max(1vw,13px);
-    border-radius: 15px;
+    width: fit-content;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: max(1vw, 14px);
+    transition: 0.3s;
 }
 
-@media (max-width:1050px){
-    .headerContent{
-        max-width: 45%;
-    }
+.slide a:hover {
+    background-color: #eee;
 }
 
-@media (max-width:750px){
-    .headerContent{
-        max-width: 65%;
+/* Background Images */
+.bg1 { background-image: url("/hero_bg.png"); }
+.bg2 { background-image: url("/hero_bg1.jpg"); }
+.bg3 { background-image: url("/hero_bg2.jpg"); }
+
+@keyframes slideLoop {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Responsive Fixes */
+@media (max-width: 750px) {
+    .header {
+        height: 50vw; /* Taller on mobile to fit text */
     }
-    .headerContent p{
-        display: none;
+    .slide p {
+        display: none; /* Hide description on mobile to save space */
     }
-    .headerContent button{
-        padding: 2vw 4vw;
+    .slide h2 {
+        max-width: 90%;
+    }
+    .slide a {
+        padding: 10px 20px;
     }
 }
