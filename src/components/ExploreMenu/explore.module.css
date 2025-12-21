@@ -1,7 +1,7 @@
 .ExploreMenu {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     margin: 10px;
 }
 
@@ -12,36 +12,51 @@
 
 .ExploreMenuText {
     max-width: 60%;
-    color: #808080;
+    color: #bbb;
 }
 
+/* Desktop: Grid View (Wrapping) */
 .ExploreMenuList {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 30px;
     text-align: center;
     margin: 20px 0px;
-    overflow-x: scroll;
+    flex-wrap: wrap;
 }
 
+/* Hide scrollbar */
 .ExploreMenuList::-webkit-scrollbar {
     display: none;
 }
 
+.ExploreMenuList {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.MenuListItem {
+    flex-shrink: 0;
+}
+
 .MenuListItem img {
     width: 7.5vw;
-    min-width: 80px;
+    min-width: 70px;
+    height: 7.5vw;
+    min-height: 70px;
     cursor: pointer;
     border-radius: 50%;
     transition: 0.1s;
+    object-fit: cover;
 }
 
 .MenuListItem p {
     margin-top: 10px;
-    color: #747474;
-    font-size: max(1.4vw, 16px);
+    color: #ffffff;
+    font-size: max(1.4vw, 12px);
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .ExploreMenu hr {
@@ -52,14 +67,130 @@
 }
 
 .MenuListItem .active {
-    border: 4px solid #eded05;
+    border: 3px solid #eded05;
     padding: 2px;
 }
 
-@media (max-width:1050px) {
+@media (max-width: 1050px) {
     .ExploreMenuText {
         max-width: 100%;
         font-size: 14px;
+        display: none;
+    }
+}
+
+/* Mobile: Horizontal Scroll (Nowrap) by default */
+@media (max-width: 768px) {
+    .ExploreMenuList {
+        justify-content: flex-start;
+        gap: 20px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-left: 10px;
+        transition: all 0.3s ease;
     }
 
+    .ExploreMenuList.mobileGrid {
+        flex-wrap: wrap;
+        justify-content: center;
+        overflow-x: visible;
+        padding-left: 0;
+    }
+
+    .MenuListItem {
+        min-width: 80px;
+        width: auto;
+        margin-bottom: 0;
+        transition: all 0.3s;
+    }
+
+    .mobileGrid .MenuListItem {
+        margin-bottom: 15px;
+        width: 28%;
+        /* 3 items per row usually */
+    }
+
+    .MenuListItem img {
+        width: 70px;
+        height: 70px;
+        max-width: none;
+        max-height: none;
+    }
+
+    .MenuListItem p {
+        font-size: 12px;
+    }
+}
+
+.headerControl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.viewToggle {
+    background: none;
+    border: none;
+    color: #ef4f5f;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: none;
+    /* Hidden on desktop */
+    align-items: center;
+    gap: 5px;
+}
+
+@media (max-width: 768px) {
+    .viewToggle {
+        display: flex;
+    }
+}
+
+.scrollIndicator {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    animation: bounceRight 2s infinite;
+}
+
+.listContainer {
+    position: relative;
+    width: 100%;
+}
+
+@keyframes bounceRight {
+
+    0%,
+    100% {
+        transform: translate(0, -50%);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(5px, -50%);
+        opacity: 1;
+    }
+}
+
+@media (min-width: 769px) {
+    .scrollIndicator {
+        display: none !important;
+    }
+
+    .viewToggle {
+        display: none !important;
+    }
 }

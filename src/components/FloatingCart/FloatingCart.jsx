@@ -16,7 +16,7 @@ const FloatingCart = () => {
             <div className={style.cartInfo}>
                 <span className={style.itemCount}>{totalItems} Items</span>
                 <span className={style.separator}>|</span>
-                <span className={style.totalPrice}>${totalAmount}</span>
+                <span className={style.totalPrice}>₹{totalAmount}</span>
             </div>
             <Link to='/cart' className={style.viewCartBtn}>
                 View Cart

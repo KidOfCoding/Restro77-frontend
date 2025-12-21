@@ -170,37 +170,60 @@
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .header {
-        height: 40vh;
-        /* Reduced from 60vh */
-        border-radius: 15px;
-        /* Keep some radius for modern look */
-        margin: 10px auto;
+        height: auto;
+        /* Let content dictate height or use aspect ratio */
+        aspect-ratio: 16/8;
+        /* Cleaner, shorter banner */
+        min-height: 180px;
+        /* Ensure it's not too small */
         width: 95%;
-        min-height: auto;
+        /* Keep it slightly contained like desktop */
+        margin: 10px auto;
+        /* Reduced margin further */
+        border-radius: 15px;
+        /* Keep rounded corners as requested */
     }
 
     .content {
-        width: 90%;
-        bottom: 15%;
-        left: 5%;
+        width: 100%;
+        bottom: 25%;
+        /* Move content up to clear the dots */
+        left: 0;
+        padding: 0 15px;
         align-items: center;
         text-align: center;
     }
 
     .content h2 {
-        font-size: 24px;
-        /* Reduced font size */
+        font-size: 6vw;
+        /* Dynamic resizing */
     }
 
     .content p {
         display: none;
-        /* Hide description on mobile to save space */
+        /* Hide description on mobile to save space and reduce clutter */
+    }
+
+    .content a {
+        padding: 8px 20px;
+        font-size: 12px;
     }
 
     .prevBtn,
     .nextBtn {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9rem;
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+
+    .dots {
+        bottom: 10px;
+        /* Move dots down on mobile */
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        /* Smaller dots */
     }
 }
