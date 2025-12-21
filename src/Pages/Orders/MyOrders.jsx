@@ -3,7 +3,7 @@ import styles from "./myOrder.module.css"
 import { StoreContext } from '../../context/StoreContext'
 import axios from 'axios'
 import { assets } from "../../assets/assets";
-
+import { FaRupeeSign } from "react-icons/fa";
 const MyOrders = () => {
     const { URl , token } = useContext(StoreContext)
     const [data,setData] = useState([]);
@@ -37,7 +37,7 @@ const MyOrders = () => {
                                 return item.name+" x " + item.quantity + ","
                             }
                         })}</p>
-                        <p>${order.amount}.00</p>
+                        <p><FaRupeeSign />{order.amount}.00</p>
                         <p>Items: {order.items.length}</p>
                         <p><span>&#x25cf;</span> <b>{order.status}</b> </p>
                         <button onClick={fetchOrders}>Track Order</button>

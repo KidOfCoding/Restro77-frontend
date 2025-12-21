@@ -71,17 +71,17 @@ theme: "dark",
           <div>
             <div className={style.CartTotalDetails}>
               <p>Subtotal</p>
-              <p>${getTotalCartAmount()}</p>
+              <p><FaRupeeSign />{getTotalCartAmount()}</p>
             </div>
             <hr />
             <div className={style.CartTotalDetails}>
               <p>Delivery Fee</p>
-              <p>${getTotalCartAmount()===0?0:5}</p> 
+              <p><FaRupeeSign />{getTotalCartAmount()===0?0:5}</p> 
             </div> 
             <hr />
             <div className={style.CartTotalDetails}>
               <b>Total</b>
-              <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+5}</b>
+              <b><FaRupeeSign />{getTotalCartAmount()===0?0:getTotalCartAmount()+5}</b>
             </div>
           </div>
           <button onClick={checkOut}>Checkout</button>
