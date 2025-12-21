@@ -61,10 +61,11 @@ const Navbar = ({ setShowLogin }) => {
         <div className={style.searchIcon}>
           <Link to='/cart'>
             <img src={assets.basket_icon} />
-          </Link>
-           {Items > 0 && (
+            {Items > 0 && (
         <div className={style.dot}>{Items}</div>
           )}
+          </Link>
+           
         </div>
         {!token ? <button
           onClick={() => {
