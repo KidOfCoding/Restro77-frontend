@@ -1,112 +1,47 @@
 .ExploreMenu {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    /* Reduced gap as requested */
+    gap: 20px;
     margin: 10px;
-    position: relative;
-    /* For positioning controls */
 }
 
-.menuHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* margin-bottom removed to reduce gap */
-}
-
-.menuHeader h1 {
+.ExploreMenu h1 {
     color: #fff;
-    font-weight: 600;
-    margin: 0;
-    font-size: max(2vw, 24px);
+    font-weight: 500;
 }
 
-.menuControls {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
-.controlBtn {
-    background: rgba(255, 255, 255, 0.05);
-    /* Very subtle transparent */
-    backdrop-filter: blur(5px);
-    border: none;
-    color: rgba(255, 255, 255, 0.7);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    /* Circle for toggle */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-size: 14px;
-}
-
-/* Specific style for arrow buttons to be cleaner */
-.arrowBtn {
-    background: transparent;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 18px;
-    padding: 0;
-    width: auto;
-    height: auto;
-}
-
-.arrowBtn:hover {
-    color: white;
-    transform: scale(1.2);
-    background: transparent;
-}
-
-.controlBtn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
+.ExploreMenuText {
+    max-width: 60%;
+    color: #808080;
 }
 
 .ExploreMenuList {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
     text-align: center;
-    margin: 5px 0px;
-    /* Tighter margin */
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 10px;
-    scroll-behavior: smooth;
-    /* Hide scrollbar but allow functionality */
-    scrollbar-width: none;
+    margin: 20px 0px;
+    overflow-x: scroll;
 }
-
 
 .ExploreMenuList::-webkit-scrollbar {
     display: none;
 }
 
-.MenuListItem {
-    scroll-snap-align: start;
-    flex-shrink: 0;
-    /* Prevent shrinking */
-}
-
 .MenuListItem img {
     width: 7.5vw;
-    min-width: 70px;
+    min-width: 80px;
     cursor: pointer;
     border-radius: 50%;
     transition: 0.1s;
 }
 
 .MenuListItem p {
-    margin-top: 5px;
-    color: #ffffff;
-    font-size: max(1.4vw, 14px);
+    margin-top: 10px;
+    color: #747474;
+    font-size: max(1.4vw, 16px);
     cursor: pointer;
-    font-weight: 500;
 }
 
 .ExploreMenu hr {
@@ -117,7 +52,7 @@
 }
 
 .MenuListItem .active {
-    border: 3px solid #eded05;
+    border: 4px solid #eded05;
     padding: 2px;
 }
 

@@ -15,63 +15,22 @@
     justify-content: space-between;
     align-items: center;
     z-index: 9999;
+    /* Ensure it stays above everything */
     animation: slideUp 0.3s ease-out;
 }
 
-@keyframes slideUp {
-    from {
-        transform: translate(-50%, 100%);
-        opacity: 0;
-    }
+/* ... existing code ... */
 
-    to {
-        transform: translate(-50%, 0);
-        opacity: 1;
-    }
-}
-
-.cartInfo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 600;
-    font-size: 16px;
-}
-
-.itemCount {
-    font-size: 14px;
-    opacity: 0.9;
-}
-
-.totalPrice {
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.separator {
-    opacity: 0.5;
-}
-
-.viewCartBtn {
-    background-color: white;
-    color: #ef4f5f;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 14px;
-    transition: transform 0.2s;
-}
-
-.viewCartBtn:hover {
-    transform: scale(1.05);
-}
-
-/* Ensure it doesn't overlap the content too much on mobile */
+/* Mobile adjustment */
 @media (max-width: 768px) {
     .floatingCart {
-        bottom: 40px;
-        width: 95%;
+        width: 94%;
         /* Wider on mobile */
+        left: 3%;
+        /* Center manually */
+        transform: none;
+        /* Reset transform */
+        bottom: 20px;
+        padding: 12px 15px;
     }
 }

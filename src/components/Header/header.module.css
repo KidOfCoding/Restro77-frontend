@@ -171,9 +171,11 @@
 @media (max-width: 768px) {
     .header {
         height: 40vh;
-        border-radius: 0;
-        margin: 0;
-        width: 100%;
+        /* Reduced from 60vh */
+        border-radius: 15px;
+        /* Keep some radius for modern look */
+        margin: 10px auto;
+        width: 95%;
         min-height: auto;
     }
 
@@ -186,20 +188,19 @@
     }
 
     .content h2 {
-        font-size: 32px;
+        font-size: 24px;
+        /* Reduced font size */
     }
 
     .content p {
-        /* On very small devices, long text might be too much, but let's keep it visible but smaller */
-        display: block;
-        font-size: 14px;
-        max-width: 100%;
+        display: none;
+        /* Hide description on mobile to save space */
     }
 
     .prevBtn,
     .nextBtn {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
     }
 }

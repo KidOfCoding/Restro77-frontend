@@ -32,64 +32,45 @@
     color: #333;
 }
 
-
 .filterBtn {
     background: none;
     border: none;
     cursor: pointer;
     padding: 10px;
     border-radius: 50%;
-    color: #666;
+    color: #aaa;
+    /* Lighter for dark theme */
     font-size: 18px;
     transition: 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    /* Important: prevents icon from disappearing */
+    /* Important: Prevents shrinking/disappearing */
 }
 
-/* ... existing logic ... */
+/* ... existing styles ... */
 
 .sectionTitle {
     font-size: max(2vw, 24px);
     font-weight: 600;
     color: #fff;
-    /* White title for dark theme */
+    /* Changed to WHITE for dark theme */
     margin-bottom: 20px;
     text-transform: capitalize;
     border-left: 5px solid #ef4f5f;
     padding-left: 15px;
 }
 
-.menuGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 30px;
-    row-gap: 40px;
-}
-
-.noResults {
-    text-align: center;
-    color: #aaa;
-    font-size: 1.2rem;
-    margin-top: 50px;
-}
+/* ... existing styles ... */
 
 @media (max-width: 600px) {
     .menuGrid {
-        /* Force single column for large cards on mobile */
         grid-template-columns: 1fr;
+        /* Full width cards */
     }
 
     .searchContainer {
-        width: 100%;
-        padding: 5px;
-    }
-
-    .filterDropdown {
-        width: 100%;
-        left: 0;
-        max-width: none;
+        width: 95%;
     }
 }
