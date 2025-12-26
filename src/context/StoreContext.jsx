@@ -1,14 +1,29 @@
 import { createContext, useEffect, useState } from "react";
 export const StoreContext = createContext(null);
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
 
 const StoreContextProvider = (props) => {
   const [cartItem, setCartItems] = useState({});
-  const URl = "https://restro77-backend-rho.vercel.app"
+ // const URl = "https://restro77-backend-rho.vercel.app"
+ const URl = "http://localhost:4000"
   const [token , setToken] = useState("")
   const [food_list,setFoodList] = useState([])
   const [Items,setItems]=useState(0);
   const addToCart =  async (itemId) => {
+    if(!token){
+          toast.warn('Please Signin to Proceed', {
+             position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+           closeOnClick: false,
+           pauseOnHover: true,
+           draggable: true,
+           progress: undefined,
+           theme: "dark",
+           });
+         return ;
+         }
     console.log(itemId);
     setItems((prev)=>prev+1);
     if (!cartItem[itemId]) {

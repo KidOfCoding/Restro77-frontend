@@ -38,38 +38,38 @@ const FoodItem = ({item}) => {
         </div> */}
        <div className="item-card">
   <div className="item-info">
-    <div className={`symbol ${item.type}`}>
-      <div className={`dot ${item.type}`}></div>
+    <div className={`symbol ${item?.type}`}>
+      <div className={`dot ${item?.type}`}></div>
     </div>
-    <span className="item-name">{item.name}</span>
+    <span className="item-name">{item?.name}</span>
   </div>
 
   <div className={style.pricecard}>
-    <span className="price">₹{item.price}</span>
+    <span className="price">₹{item?.price}</span>
 
     {/* NOT IN CART */}
-    {!cartItem[item._id] ? (
+    {!cartItem[item?._id] ? (
       <TbShoppingCartPlus
         className={style.addcart}
         size={25}
         color="orange"
-        onClick={() => addToCart(item._id)}
+        onClick={() => addToCart(item?._id)}
       />
     ) : (
       /* IN CART → SHOW +/- */
       <div className={style.qtyControl}>
         <button
           className={style.qtyBtn}
-          onClick={() => removeFromCart(item._id)}
+          onClick={() => removeFromCart(item?._id)}
         >
           −
         </button>
 
-        <span className={style.qty}>{cartItem[item._id]}</span>
+        <span className={style.qty}>{cartItem[item?._id]}</span>
 
         <button
           className={style.qtyBtn}
-          onClick={() => addToCart(item._id)}
+          onClick={() => addToCart(item?._id)}
         >
           +
         </button>
